@@ -2,10 +2,17 @@ import express, { Request, Response, NextFunction } from "express";
 import appError from "./utils/appError";
 import globalErrorHandlerMiddleware from "./middlewares/globalErrorHandler.middleware";
 import route from "./routes/route";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use("/", route);
 
